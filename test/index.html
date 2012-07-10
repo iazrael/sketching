@@ -3,11 +3,42 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Sketch Test</title>
+    <style>
+    canvas{
+        border: 1px solid #339;
+    }
+    .canvasContainer{
+        float: left;
+        width: 530px;
+    }
+    .toolsContainer{
+        width: 200px;
+        float: left;
+    }
+    .tools{
+        border: 1px solid #369;
+    }
+    </style>
 </head>
 <body>
+<div class="canvasContainer">
+    <h3>Input</h3>
     <canvas id="source" width="500" height="300"></canvas>
     <p></p>
+    <h3>Output</h3>
     <canvas id="target" width="500" height="300"></canvas>
+</div>
+<div class="toolsContainer">
+    <h3>Action</h3>
+    <div id="tools" class="tools">
+        <p><input type="button" value="discolor"></p>
+        <p><input type="button" value="invert"></p>
+        <p><input type="button" value="gaussBlur"></p>
+        <p><input type="button" value="dodgeColor"></p>
+        <p><input type="button" style="width: 100px; height: 25px;" value="sketch"></p>
+    </div>
+</div>
+
     <script type="text/javascript" src="../src/main.js"></script>
 </body>
 </html>
