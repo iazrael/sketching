@@ -7,7 +7,6 @@
      * @return {Array}
      * @link {http://www.61ic.com/Article/DaVinci/DM64X/200804/19645.html}
      */
-
     function discolor(pixes) {
         var grayscale;
         for (var i = 0, len = pixes.length; i < len; i += 4) {
@@ -22,7 +21,6 @@
      * @param  {Array} pixes pix array
      * @return {Array}
      */
-
     function invert(pixes) {
         for (var i = 0, len = pixes.length; i < len; i += 4) {
             pixes[i] = 255 - pixes[i]; //r
@@ -38,7 +36,6 @@
      * @param  {Array} mixPixes  混合色
      * @return {Array}
      */
-
     function dodgeColor(basePixes, mixPixes) {
         for (var i = 0, len = basePixes.length; i < len; i += 4) {
             basePixes[i] = basePixes[i] + (basePixes[i] * mixPixes[i]) / (255 - mixPixes[i]);
@@ -128,104 +125,35 @@
         return pixes;
     }
 
-    /************************* testCase ***************************/
-    function $(id){
-        return document.getElementById(id);
-    }
-    testDiscolor = function(){
-        var width = 2, height = 2,
-            pixes = [];
-        for(var i = 0, len = width * height * 4; i < len; i++){
-            pixes[i] = Math.round(255 * Math.random());
-        }
-        console.log(JSON.stringify(pixes));
-        discolor(pixes);
-        console.log(pixes);
-    }
-
-    testCaseGaussBlur = function(){
-        var width = 5, height = 5,
-            pixes = [];
-        for(var i = 0, len = width * height * 4; i < len; i++){
-            pixes[i] = Math.round(255 * Math.random());
-        }
-        console.log(JSON.stringify(pixes));
-        gaussBlur(pixes, width, height);
-        console.log(pixes);
+    /**
+     * 素描
+     * @param  {Array} pixes  
+     * @param  {Number} width 图片的宽度
+     * @param  {Number} height 图片的高度
+     * @param  {Number} radius 取样区域半径, 正数, 可选, 默认为 3.0
+     * @param  {Number} sigma 标准方差, 可选, 默认取值为 radius / 3
+     * @return {Array}
+     */
+    function sketch(pixes, width, height, radius, sigma){
+        var copyPixes;
+        discolor(pixes);//去色
+        copyPixes = Array.prototype.slice.call(pixes, 0);//复制一份
+        invert(copyPixes);//反相
+        gaussBlur(copyPixes, width, height, radius, sigma);//高斯模糊
+        dodgeColor(pixes, copyPixes);//颜色减淡
+        return pixes;
     }
 
-    testCase = function (){
-        var source = $('source');
-        var ctx = source.getContext('2d');
-        var target = $('target');
-        var ctx2 = target.getContext('2d');
-        var tools = $('tools');
+    window.sketching = {
+        discolor: discolor,
+        invert: invert,
+        dodgeColor: dodgeColor,
+        gaussBlur: gaussBlur,
+        sketch: sketch
+    };
 
-        ctx.font= '30px sans-serif';
-        ctx.fillText('Drop a picture to here', 80, 100);
-
-        ctx2.font= '30px sans-serif';
-        ctx2.fillText('You will see the result in here', 20, 100);
-
-        source.addEventListener('drop', function(e){
-            e.preventDefault();
-            var file = e.dataTransfer.files[0];
-            var reader = new FileReader();
-            reader.onload = function(e){
-                var img = new Image();
-                img.onload = function(){
-                    ctx.drawImage(img, 0 ,0);
-                }
-                img.src = e.target.result;
-            }
-            reader.onerror = function(e){
-                alert(e.target.error.code);
-            }
-            reader.readAsDataURL(file);
-        });
-        tools.addEventListener('click', function(e){
-            if(e.target.tagName === 'INPUT'){
-                var value = e.target.value;
-                var imgData = ctx.getImageData(0, 0, source.width, source.height);
-                switch(value){
-                    case 'discolor':
-                        discolor(imgData.data);
-                        ctx2.putImageData(imgData, 0, 0);
-                        break;
-                    case 'invert':
-                        invert(imgData.data);
-                        ctx2.putImageData(imgData, 0, 0);
-                        break;
-                    case 'gaussBlur':
-                        gaussBlur(imgData.data, imgData.width, imgData.height);
-                        ctx2.putImageData(imgData, 0, 0);
-                        break;
-                    case 'dodgeColor':
-                        // dodgeColor(imgData.data, imgData2.data);
-                        // ctx2.putImageData(imgData, 0, 0);
-                        break;
-                    case 'sketch':
-                        imgData2 = ctx.getImageData(0, 0, source.width, source.height);
-                        discolor(imgData.data);
-                        discolor(imgData2.data);
-                       
-                        invert(imgData2.data);
-                        
-                        gaussBlur(imgData2.data, imgData2.width, imgData2.height, 5, 1);
-                        
-                        dodgeColor(imgData.data, imgData2.data);
-                        ctx2.putImageData(imgData, 0, 0);
-
-
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
+    if(typeof window.sk === 'undefined'){
+        window.sk = window.sketching;
     }
-
-    testCase();
-
 
 })();
