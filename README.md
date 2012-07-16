@@ -1,3 +1,3 @@
 #SKETCHING
 
-Convert a picture to sketch using HTML5
+Convert a picture to sketch by using HTML5
