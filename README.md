@@ -1,4 +1,3 @@
-sketching
-=========
+#SKETCHING
 
-convert a picture to sketch
+Convert a picture to sketch using HTML5
