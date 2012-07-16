@@ -4,6 +4,7 @@
 .body{
     position: relative;
     border: 1px solid #C3C3C3;
+    overflow: auto;
 }
 .body canvas{
     margin: 0 auto;

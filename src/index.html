@@ -16,13 +16,14 @@
         </div>
         <div class="toolbar">
             <form class="well form-inline">
-                <label for="strength">Strength</label>
-                <input id="strength" type="number" min="1" class="input-small" placeholder="5">
-                <button id="action" type="button" class="btn btn-primary">Action</button>
+                <label for="strength">Strength: </label>
+                <input id="strength" type="number" min="1" value="5" class="input-small" placeholder="5">
+                <button id="action" type="button" class="btn btn-primary" disabled>Action</button>
+                <a id="download" download="sketch.png" target="_blank" title="download sketch" class="btn btn-info" href="javascript: void(0);"><span class="icon-file icon-white"></span>Download</a>
             </form>
         </div>
         <div class="body">
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" width="600" height="400"></canvas>
             <div id="dropper" class="dropper" title="drop a new picture to replace the old one.">
                 <h2>drop a picture to here start sketching.</h2>
             </div>
