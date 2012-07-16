@@ -3,12 +3,36 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Sketching - sketch now!</title>
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap-responsive.css">
     <link rel="stylesheet" type="text/css" href="./style/style.css">
 </head>
 <body>
     <div class="container">
-
+        <div class="page-header">
+            <h1>Sketching
+                <small>create a sketch automatically</small>
+            </h1>
+        </div>
+        <div class="toolbar">
+            <form class="well form-inline">
+                <label for="strength">Strength</label>
+                <input id="strength" type="number" min="1" class="input-small" placeholder="5">
+                <button id="action" type="button" class="btn btn-primary">Action</button>
+            </form>
+        </div>
+        <div class="body">
+            <canvas id="canvas"></canvas>
+            <div id="dropper" class="dropper" title="drop a new picture to replace the old one.">
+                <h2>drop a picture to here start sketching.</h2>
+            </div>
+        </div>
+        <p></p>
+        <div class="alert">
+          <strong>Notice:</strong> Sketching is only work on modern browsers, such as Chrome(recommend), Firefox, Safari, Opera, IE10+(not tested).
+        </div>
     </div>
     <script type="text/javascript" src="./js/sketching.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>

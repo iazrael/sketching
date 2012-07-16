@@ -82,6 +82,7 @@
         for (y = 0; y < height; y++) {
             for (x = 0; x < width; x++) {
                 r = g = b = a = 0;
+                gaussSum = 0;
                 for(j = -radius; j <= radius; j++){
                     k = x + j;
                     if(k >= 0 && k < width){//确保 k 没超出 x 的范围
@@ -91,12 +92,15 @@
                         g += pixes[i + 1] * gaussMatrix[j + radius];
                         b += pixes[i + 2] * gaussMatrix[j + radius];
                         // a += pixes[i + 3] * gaussMatrix[j];
+                        gaussSum += gaussMatrix[j + radius];
                     }
                 }
                 i = (y * width + x) * 4;
-                pixes[i] = r;
-                pixes[i + 1] = g;
-                pixes[i + 2] = b;
+                // 除以 gaussSum 是为了消除处于边缘的像素, 高斯运算不足的问题
+                // console.log(gaussSum)
+                pixes[i] = r / gaussSum;
+                pixes[i + 1] = g / gaussSum;
+                pixes[i + 2] = b / gaussSum;
                 // pixes[i + 3] = a ;
             }
         }
@@ -104,6 +108,7 @@
         for (x = 0; x < width; x++) {
             for (y = 0; y < height; y++) {
                 r = g = b = a = 0;
+                gaussSum = 0;
                 for(j = -radius; j <= radius; j++){
                     k = y + j;
                     if(k >= 0 && k < height){//确保 k 没超出 y 的范围
@@ -112,12 +117,16 @@
                         g += pixes[i + 1] * gaussMatrix[j + radius];
                         b += pixes[i + 2] * gaussMatrix[j + radius];
                         // a += pixes[i + 3] * gaussMatrix[j];
+                        gaussSum += gaussMatrix[j + radius];
                     }
                 }
                 i = (y * width + x) * 4;
-                pixes[i] = r;
-                pixes[i + 1] = g;
-                pixes[i + 2] = b;
+                pixes[i] = r / gaussSum;
+                pixes[i + 1] = g / gaussSum;
+                pixes[i + 2] = b / gaussSum;
+                // pixes[i] = r ;
+                // pixes[i + 1] = g ;
+                // pixes[i + 2] = b ;
                 // pixes[i + 3] = a ;
             }
         }
