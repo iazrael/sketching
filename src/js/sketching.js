@@ -1,7 +1,7 @@
 (function() {
 
     /**
-     * 把图像编程黑白色
+     * 把图像变成黑白色
      * Y = 0.299R + 0.587G + 0.114B
      * @param  {Array} pixes pix array
      * @return {Array}
@@ -41,7 +41,6 @@
             basePixes[i] = basePixes[i] + (basePixes[i] * mixPixes[i]) / (255 - mixPixes[i]);
             basePixes[i + 1] = basePixes[i + 1] + (basePixes[i + 1] * mixPixes[i + 1]) / (255 - mixPixes[i + 1]);
             basePixes[i + 2] = basePixes[i + 2] + (basePixes[i + 2] * mixPixes[i + 2]) / (255 - mixPixes[i + 2]);
-
         }
         return basePixes;
     }

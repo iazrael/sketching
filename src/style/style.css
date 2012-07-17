@@ -7,6 +7,7 @@
     background: #eee;
     overflow: auto;
     max-height: 480px;
+    min-height: 200px;
 }
 .body canvas{
     margin: 0 auto;
