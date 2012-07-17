@@ -23,7 +23,8 @@
     margin: 10% auto 0;
     text-align: center;
 }
-.github-button{
+.link-button{
     float: right;
     font-weight: normal;
+    margin: 0 5px;
 }
