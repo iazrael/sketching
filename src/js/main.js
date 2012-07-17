@@ -3,6 +3,16 @@
         return document.getElementById(id);
     }
 
+    var toggleActionButton = function(status){
+        if(status){
+            action.classList.add('btn-primary');
+            action.disabled = false;
+        }else{
+            action.classList.remove('btn-primary');
+            action.disabled = true;
+        }
+    }
+
     var doSketch = function(){
         var st = strangth.value || 5;
         var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -28,14 +38,18 @@
     }
 
     var drawImage = function(img){
-        //set the width/height will clear the canvas
-        // canvas.width = img.width;
-        // canvas.height = 640 * img.height / img.width;
-        setCanvasSize(img.width, img.height);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        doSketch();
-        download.href = canvas.toDataURL();
+        toggleActionButton(false);
+        setTimeout(function(){
+            //set the width/height will clear the canvas
+            // canvas.width = img.width;
+            // canvas.height = 640 * img.height / img.width;
+            setCanvasSize(img.width, img.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            doSketch();
+            download.href = canvas.toDataURL();
+            toggleActionButton(true);
+        }, 0);
     }
 
     var canvas = $('canvas'),
@@ -55,9 +69,6 @@
         reader.onload = function(e){
             var img = new Image();
             img.onload = function(){
-                if(!cacheImg){
-                    action.disabled = false;
-                }
                 cacheImg = this;
                 drawImage(this);
             }

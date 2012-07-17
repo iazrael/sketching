@@ -19,9 +19,14 @@
         </div>
         <div class="toolbar">
             <form class="well form-inline">
-                <label for="strength">Sample szie: </label>
-                <input id="strength" type="number" min="1" value="5" class="input-small" placeholder="5">
-                <button id="action" type="button" class="btn btn-primary" disabled>Action</button>
+                <label>Sample szie: 
+                    <input id="strength" type="number" min="1" value="5" class="input-small" placeholder="5">
+                </label>
+                <!-- <label> Canvas szie: </label>
+                <input id="canvasWidth" type="text" class="input-mini" placeholder="max:640">
+                X
+                <input id="canvasHeight" type="text" class="input-mini" placeholder="max:480"> -->
+                <button id="action" type="button" class="btn " disabled>Action</button>
                 <a id="download" download="sketch.png" target="_blank" title="download sketch" class="btn btn-success" href="javascript: void(0);"><small class="icon-download icon-white"></small> Download</a>
             </form>
             <div class="alert alert-info"> drop a picture to the canvas to start sketching.</div>
