@@ -10,12 +10,30 @@
         ctx.putImageData(imgData, 0, 0);
     }
 
+    var defaultWidth = 640, defaultHeight = 480;
+    var setCanvasSize = function(width, height){
+        var scale = height / width,
+            defaultScale = defaultHeight / defaultWidth;
+        if(scale >= defaultScale && height >= defaultHeight){
+            height = defaultHeight;
+            width = height / scale;
+        }
+        if(scale <= defaultScale && width >= defaultWidth){
+            width = defaultWidth;
+            height = width * scale;
+        }
+        // console.log(width, height);
+        canvas.width = width;
+        canvas.height = height;
+    }
+
     var drawImage = function(img){
         //set the width/height will clear the canvas
-        canvas.width = img.width;
-        canvas.height = img.height;
+        // canvas.width = img.width;
+        // canvas.height = 640 * img.height / img.width;
+        setCanvasSize(img.width, img.height);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0 ,0);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         doSketch();
         download.href = canvas.toDataURL();
     }

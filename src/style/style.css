@@ -1,14 +1,15 @@
 .container{
-    min-width: 600px;
+    min-width: 640px;
 }
 .body{
     position: relative;
     border: 1px solid #C3C3C3;
+    background: #eee;
     overflow: auto;
+    max-height: 480px;
 }
 .body canvas{
     margin: 0 auto;
-    width: 100%;
     display: block;
 }
 .body .dropper{
@@ -21,4 +22,8 @@
 .body .dropper h2{
     margin: 10% auto 0;
     text-align: center;
+}
+.github-button{
+    float: right;
+    font-weight: normal;
 }

@@ -3,8 +3,9 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Sketching - sketch now!</title>
-    <link rel="stylesheet" type="text/css" href="./style/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="./style/bootstrap-responsive.css">
+    <meta name="author" content="imatlas,atlas@imatlas.com" />
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap-responsive.min.css">
     <link rel="stylesheet" type="text/css" href="./style/style.css">
 </head>
 <body>
@@ -12,20 +13,22 @@
         <div class="page-header">
             <h1>Sketching
                 <small>create a sketch automatically</small>
+                <a class="btn github-button" title="view on github" href="https://github.com/iazrael/sketching" target="_blank">View on GitHub</a>
             </h1>
         </div>
         <div class="toolbar">
             <form class="well form-inline">
-                <label for="strength">Strength: </label>
+                <label for="strength">Sample szie: </label>
                 <input id="strength" type="number" min="1" value="5" class="input-small" placeholder="5">
                 <button id="action" type="button" class="btn btn-primary" disabled>Action</button>
-                <a id="download" download="sketch.png" target="_blank" title="download sketch" class="btn btn-info" href="javascript: void(0);"><span class="icon-file icon-white"></span>Download</a>
+                <a id="download" download="sketch.png" target="_blank" title="download sketch" class="btn btn-success" href="javascript: void(0);"><small class="icon-download icon-white"></small> Download</a>
             </form>
+            <div class="alert alert-info"> drop a picture to the canvas to start sketching.</div>
         </div>
         <div class="body">
-            <canvas id="canvas" width="600" height="400"></canvas>
+            <canvas id="canvas" width="640" height="480"></canvas>
             <div id="dropper" class="dropper" title="drop a new picture to replace the old one.">
-                <h2>drop a picture to here start sketching.</h2>
+                <h2>drop a picture to here.</h2>
             </div>
         </div>
         <p></p>
