@@ -26,10 +26,10 @@
                 <input id="canvasWidth" type="text" class="input-mini" placeholder="max:640">
                 X
                 <input id="canvasHeight" type="text" class="input-mini" placeholder="max:480"> -->
-                <button id="action" type="button" class="btn " disabled>Action</button>
+                <button id="action" type="button" class="btn " disabled>Apply</button>
                 <a id="download" download="sketch.png" target="_blank" title="download sketch" class="btn btn-success download-button" href="javascript: void(0);"><small class="icon-download icon-white"></small> Download</a>
             </form>
-            <div class="alert alert-info"> drop a picture to the canvas to start sketching.</div>
+            <div class="alert alert-info"> drop a picture to the canvas to start/restart sketching.</div>
         </div>
         <div class="body">
             <canvas id="canvas" width="640" height="480"></canvas>
@@ -42,6 +42,12 @@
           <strong>Notice:</strong> Sketching is only work on modern browsers, such as Chrome(recommend), Firefox, Safari, Opera, IE10+(not tested).
         </div>
     </div>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32718600-6']);
+        _gaq.push(['_trackPageview']);
+    </script>
+    <script type="text/javascript" src="http://static.imatlas.com/google/ga.js"></script>
     <script type="text/javascript" src="./js/sketching.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
 </body>
