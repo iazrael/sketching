@@ -1,0 +1,15 @@
+{
+  "name": "Sketching",
+  "description": "create a sketch automatically",
+  "version": "1.2",
+  "app": {
+    "launch": {
+      "web_url": "http://apps.imatlas.com/sketching/"
+    }
+  },
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "permissions": [
+  ]
+}
