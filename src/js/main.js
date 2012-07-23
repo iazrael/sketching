@@ -84,6 +84,9 @@
         }
         reader.readAsDataURL(file);
     });
+    dropper.addEventListener('dragover', function(e){
+        e.preventDefault();
+    });
 
     action.addEventListener('click', function(e){
         if(cacheImg){
