@@ -35,9 +35,19 @@
     float: right;
 }
 .grid{
-    background-image:
-    -webkit-linear-gradient(top, transparent 39px, rgba(200, 200, 200, 0.5) 40px), 
-    -webkit-linear-gradient(left, transparent 39px, rgba(200, 200, 200, 0.5) 40px)
+    background-image: -webkit-linear-gradient(top, transparent 39px, rgba(200, 200, 200, 0.5) 40px), -webkit-linear-gradient(left, transparent 39px, rgba(200, 200, 200, 0.5) 40px)
     ;
+    background-image: -moz-linear-gradient(top, transparent 39px, rgba(200, 200, 200, 0.5) 40px), -moz-linear-gradient(left, transparent 39px, rgba(200, 200, 200, 0.5) 40px)
+    ;
+    background-image: -o-linear-gradient(top, transparent 39px, rgba(200, 200, 200, 0.5) 40px), -o-linear-gradient(left, transparent 39px, rgba(200, 200, 200, 0.5) 40px)
+    ;
+    background-image: -ms-linear-gradient(top, transparent 39px, rgba(200, 200, 200, 0.5) 40px), -ms-linear-gradient(left, transparent 39px, rgba(200, 200, 200, 0.5) 40px)
+    ;
+    background-image:
+    linear-gradient(top, transparent 39px, rgba(200, 200, 200, 0.5) 40px), 
+    linear-gradient(left, transparent 39px, rgba(200, 200, 200, 0.5) 40px)
+    ;
+    -webkit-background-size: 40px 40px;
+    -moz-background-size: 40px 40px;
     background-size: 40px 40px;
 }
