@@ -83,10 +83,13 @@
             }
         }
         reader.readAsDataURL(file);
-    });
+    }, false);
     dropper.addEventListener('dragover', function(e){
         e.preventDefault();
-    });
+    }, false);
+    dropper.addEventListener('dragenter', function(e){
+        e.preventDefault();
+    }, false);
 
     action.addEventListener('click', function(e){
         if(cacheImg){
@@ -94,6 +97,6 @@
         }else{
             alert('please select a picture first')
         }
-    });
+    }, false);
 
 })();
